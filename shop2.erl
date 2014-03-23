@@ -3,5 +3,4 @@
 -import(lists, [map/2, sum/1]).
 
 total(ItemList) ->
-    sum(map(fun({What, Quantity}) ->
-                    shop:cost(What) * Quantity end, ItemList)).
+    sum([shop:cost(What) * Quantity || {What, Quantity} <- ItemList]).
